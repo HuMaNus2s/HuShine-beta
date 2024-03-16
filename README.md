@@ -1,5 +1,5 @@
 # HuShine BETA
-My personal website, I use it to test various jokes.
+My personal website, where I will implement all my skills in writing websites.
 ## Goals:
 * Absolute modularity
 * Adaptive for all devices
