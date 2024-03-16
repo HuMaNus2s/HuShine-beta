@@ -1,0 +1,79 @@
+* {box-sizing: border-box}
+      .slide {display: none}
+      /* Стили для изображения внутри слайда */
+      .slide img {
+            vertical-align: middle;
+            cursor: pointer;
+        }
+      .slideshow-container {
+      background-color: black;
+      border-radius: 15px;
+      max-width: 1000px;
+      position: relative;
+      margin: auto;
+      }
+      .slideshow-container img {
+            vertical-align: middle;
+            border-radius: 15px;
+      }
+      .slideshow slideshow-container {
+            left: 200px;
+      }
+      /* Кнопки next & previous */
+      .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: 0;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+      }
+      /* Измените положение "next button" */
+      .next {
+      right: 0;
+      border-radius: 5px 0 0 5px;
+      }
+      /* Добавьте черный фоновый цвет с небольшой прозрачностью */
+      .prev:hover, .next:hover {
+      background-color: rgba(0, 0, 0, 0.38);
+      }
+      /* Точки/маркеры/указатели */
+      .dot {
+      cursor: pointer;
+      height: 15px;
+      width: 15px;
+      margin: 0 2px;
+      background-color: #999999ba;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+      }
+      .active, .dot:hover {
+      margin: 2px 2px;
+      background-color: #111111ba;
+      }
+      /* Выцветание анимации */
+      .fade {
+      -webkit-animation-name: fade;
+      -webkit-animation-duration: 0.6s;
+      animation-name: fade;
+      animation-duration: 0.6s;
+      }
+      @-webkit-keyframes fade {
+      from {opacity: .4} 
+      to {opacity: 1}
+      }
+      @keyframes fade {
+      from {opacity: .4} 
+      to {opacity: 1}
+      }
+      /* Для маленьких экранов увеличьте размер текста  */
+      @media only screen and (max-width: 300px) {
+      .prev, .next,.text {font-size: 11px}
+      }
