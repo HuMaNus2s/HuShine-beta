@@ -1,79 +1,103 @@
 * {box-sizing: border-box}
       .slide {display: none}
-      /* Стили для изображения внутри слайда */
+      /* Style in image */
       .slide img {
             vertical-align: middle;
             cursor: pointer;
         }
       .slideshow-container {
-      background-color: black;
-      border-radius: 15px;
-      max-width: 1000px;
-      position: relative;
-      margin: auto;
+            background-color: black;
+            border-radius: calc(var(--slide--button-border-radius-15) * var(--slideshow-max-width));
+            max-width: 100%;
+            position: relative;
+            margin: auto;
       }
       .slideshow-container img {
             vertical-align: middle;
-            border-radius: 15px;
+            border-radius: calc(var(--slide--button-border-radius-15) * var(--slideshow-max-width));
       }
-      .slideshow slideshow-container {
-            left: 200px;
+      .slideshow {
+            display: flex; /* Make the slideshow a flex container */
+            flex-direction: column; /* Arrange content vertically */
+            align-items: center; /* Align dots horizontally in the center */
+            /*Consts var*/
+            --slide-button-font-size-factor: 0.018;
+            --slide-button-size-dot-factor: 0.020;
+            --slide-button-padding-dot-factor: 250;
+            --slide--button-border-radius-3: 0.003;
+            --slide--button-border-radius-5: 0.005;
+            --slide--button-border-radius-15: 0.015;
+
+            max-width: var(--slideshow-max-width);
+
+            --slideshow-max-width: 0;
       }
-      /* Кнопки next & previous */
+      /* next & previous buttons*/
       .prev, .next {
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      width: auto;
-      padding: 16px;
-      margin-top: 0;
-      color: white;
-      font-weight: bold;
-      font-size: 18px;
-      transition: 0.6s ease;
-      border-radius: 0 3px 3px 0;
-      user-select: none;
+            cursor: pointer;
+            position: absolute;
+            width: auto;
+            padding: 16px;
+            margin-top: 0;
+            color: white;
+            font-weight: bold;
+            font-size: calc(var(--slide-button-font-size-factor) * var(--slideshow-max-width));
+            transition: 0.6s ease;
+            border-radius: 0 
+            calc(var(--slide--button-border-radius-3) * var(--slideshow-max-width)) 
+            calc(var(--slide--button-border-radius-3) * var(--slideshow-max-width)) 
+            0;
+            user-select: none;
       }
-      /* Измените положение "next button" */
       .next {
-      right: 0;
-      border-radius: 5px 0 0 5px;
+            right: 0;
+            border-radius: calc(var(--slide--button-border-radius-5) * var(--slideshow-max-width)) 
+            0 
+            0 
+            calc(var(--slide--button-border-radius-5) * var(--slideshow-max-width))
       }
-      /* Добавьте черный фоновый цвет с небольшой прозрачностью */
       .prev:hover, .next:hover {
-      background-color: rgba(0, 0, 0, 0.38);
-      }
-      /* Точки/маркеры/указатели */
+            background-color: rgba(0, 0, 0, 0.38);
+      }        
+      .slideshow .slideshow-container a.prev,
+      .slideshow .slideshow-container a.next {
+            top: 50%; /* Позиционируем по вертикали */
+            transform: translateY(-50%); /* Центрируем точно по центру */
+        }
+      /* dot/markers/indicator */
       .dot {
-      cursor: pointer;
-      height: 15px;
-      width: 15px;
-      margin: 0 2px;
-      background-color: #999999ba;
-      border-radius: 50%;
-      display: inline-block;
-      transition: background-color 0.6s ease;
+            cursor: pointer;
+            height: calc(var(--slide-button-size-dot-factor) * var(--slideshow-max-width));
+            width: calc(var(--slide-button-size-dot-factor) * var(--slideshow-max-width));
+            margin: 0 2px;
+            background-color: #999999ba;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
       }
       .active, .dot:hover {
-      margin: 2px 2px;
-      background-color: #111111ba;
+            margin: 2px 2px;
+            background-color: #111111ba;
       }
-      /* Выцветание анимации */
+      .div-dot {
+            margin-top: -15px;
+      }
+      /* Animation fading */
       .fade {
-      -webkit-animation-name: fade;
-      -webkit-animation-duration: 0.6s;
-      animation-name: fade;
-      animation-duration: 0.6s;
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 0.6s;
+            animation-name: fade;
+            animation-duration: 0.6s;
       }
       @-webkit-keyframes fade {
-      from {opacity: .4} 
-      to {opacity: 1}
+            from {opacity: .4} 
+            to {opacity: 1}
       }
       @keyframes fade {
-      from {opacity: .4} 
-      to {opacity: 1}
+            from {opacity: .4} 
+            to {opacity: 1}
       }
-      /* Для маленьких экранов увеличьте размер текста  */
+      /* For small display  */
       @media only screen and (max-width: 300px) {
       .prev, .next,.text {font-size: 11px}
       }
