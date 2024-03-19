@@ -1,14 +1,10 @@
-* {box-sizing: border-box}
+* {box-sizing: content-box}
       .slide {display: none}
+      
       /* Style in image */
-      .slide img {
-            vertical-align: middle;
-            cursor: pointer;
-        }
       .slideshow-container {
             background-color: black;
             border-radius: calc(var(--slide--button-border-radius-15) * var(--slideshow-max-width));
-            max-width: 100%;
             position: relative;
             margin: auto;
       }
@@ -17,6 +13,8 @@
             border-radius: calc(var(--slide--button-border-radius-15) * var(--slideshow-max-width));
       }
       .slideshow {
+            --slideshow-max-width: 0;
+            --slideshow-max-height: 0;
             display: flex; /* Make the slideshow a flex container */
             flex-direction: column; /* Arrange content vertically */
             align-items: center; /* Align dots horizontally in the center */
@@ -24,14 +22,18 @@
             --slide-button-font-size-factor: 0.018;
             --slide-button-size-dot-factor: 0.020;
             --slide-button-padding-dot-factor: 250;
-            --slide--button-border-radius-3: 0.003;
+           /* --slide--button-border-radius-3: 0.003; */
             --slide--button-border-radius-5: 0.005;
             --slide--button-border-radius-15: 0.015;
-
+        
             max-width: var(--slideshow-max-width);
-
-            --slideshow-max-width: 0;
       }
+      .slide img {
+            vertical-align: middle;
+            cursor: pointer;
+            max-height: var(--slideshow-max-height);
+      }
+        
       /* next & previous buttons*/
       .prev, .next {
             cursor: pointer;
@@ -44,8 +46,8 @@
             font-size: calc(var(--slide-button-font-size-factor) * var(--slideshow-max-width));
             transition: 0.6s ease;
             border-radius: 0 
-            calc(var(--slide--button-border-radius-3) * var(--slideshow-max-width)) 
-            calc(var(--slide--button-border-radius-3) * var(--slideshow-max-width)) 
+            calc(var(--slide--button-border-radius-5) * var(--slideshow-max-width)) 
+            calc(var(--slide--button-border-radius-5) * var(--slideshow-max-width)) 
             0;
             user-select: none;
       }
@@ -56,6 +58,7 @@
             0 
             calc(var(--slide--button-border-radius-5) * var(--slideshow-max-width))
       }
+      
       .prev:hover, .next:hover {
             background-color: rgba(0, 0, 0, 0.38);
       }        
@@ -99,5 +102,5 @@
       }
       /* For small display  */
       @media only screen and (max-width: 300px) {
-      .prev, .next,.text {font-size: 11px}
+      .prev, .next {font-size: 11px}
       }
